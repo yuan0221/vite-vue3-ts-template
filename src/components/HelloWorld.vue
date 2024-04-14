@@ -32,7 +32,7 @@ const count = ref(0)
     Click on the Vite and Vue logos to learn moreClick on the Vite and Vue logos
     to learn moreClick on the Vite and Vue logos to learn moreClick on the Vite
     and Vue logos to learn moreClick on the Vite and Vue logos to learn
-    moreClick on the Vite and Vue logos to learn more
+    moreClick on the Vite and Vue logos to learn more asadsa
   </p>
 </template>
 
