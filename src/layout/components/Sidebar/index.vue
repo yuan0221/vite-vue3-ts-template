@@ -34,6 +34,7 @@ const route = useRoute()
 const SettingStore = useSettingStore()
 const PermissionStore = usePermissionStore()
 
+const isCollapse = computed(() => SettingStore.isCollapse)
 // 设置
 const themeConfig = computed(() => SettingStore.themeConfig)
 

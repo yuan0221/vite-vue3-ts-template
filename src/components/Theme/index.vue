@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import SwitchDark from '@/components/SwitchDark/index.vue'
-import { useSettingStore } from '@/store/modules/setting'
+import { keyType, useSettingStore, valueType } from '@/store/modules/setting'
 
 const SettingStore = useSettingStore()
 
@@ -26,8 +26,8 @@ const drawer = computed({
 })
 
 // 进行配置
-const changeSwitch = (key: any, val: any) => {
-  SettingStore.setThemeConfig({ key, val })
+const changeSwitch = (key: keyType, val: valueType) => {
+  SettingStore.setThemeConfig(key, val)
 }
 </script>
 

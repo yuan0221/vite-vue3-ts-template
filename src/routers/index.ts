@@ -10,7 +10,9 @@ import homeRouter from './modules/home'
 
 export const asyncRoutes = [...dataScreenRouter, ...homeRouter]
 
-export const routes: Array<RouteRecordRaw & extendRoute> = [
+export type routesType = RouteRecordRaw & extendRoute
+
+export const routes: Array<routesType> = [
   {
     path: '/',
     name: 'layout',

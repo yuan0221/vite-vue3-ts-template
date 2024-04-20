@@ -15,7 +15,7 @@ export const usePermissionStore = defineStore({
     permission_routes: (state) => {
       return state.routes
     },
-    keepAliveRoutes: (state) => {
+    keepAliveRoutes: () => {
       return filterKeepAlive(asyncRoutes)
     },
   },
@@ -34,16 +34,6 @@ export const usePermissionStore = defineStore({
         this.addRoutes = accessedRoutes
         resolve(accessedRoutes)
       })
-    },
-    // 清楚路由
-    clearRoutes() {
-      this.routes = []
-      this.addRoutes = []
-      this.cacheRoutes = []
-    },
-    getCacheRoutes() {
-      this.cacheRoutes = filterKeepAlive(asyncRoutes)
-      return this.cacheRoutes
     },
   },
 })

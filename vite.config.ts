@@ -12,5 +12,9 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src'),
     },
+    // 默认支持扩展名 ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
+    // .vue 不生效，官方说会影响类型解析，不建议添加
+    // https://vitejs.dev/config/shared-options.html#resolve-extensions
+    // extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.vue'],
   },
 })

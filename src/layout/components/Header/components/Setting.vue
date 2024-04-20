@@ -13,11 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useSettingStore } from '@/store/modules/setting'
+import { keyType, useSettingStore, valueType } from '@/store/modules/setting'
 import { Setting } from '@element-plus/icons-vue'
 const SettingStore = useSettingStore()
-const changeSwitch = (key, val) => {
-  SettingStore.setThemeConfig({ key, val })
+const changeSwitch = (key: keyType, val: valueType) => {
+  SettingStore.setThemeConfig(key, val)
 }
 </script>
 

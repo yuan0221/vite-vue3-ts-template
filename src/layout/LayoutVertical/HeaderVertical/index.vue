@@ -26,7 +26,7 @@ import { useSettingStore } from '@/store/modules/setting'
 
 const SettingStore = useSettingStore()
 const themeConfig = computed(() => SettingStore.themeConfig)
-const isCollapse = computed(() => !SettingStore.isCollapse)
+const isCollapse = computed(() => SettingStore.isCollapse)
 </script>
 
 <style lang="scss" scoped>
