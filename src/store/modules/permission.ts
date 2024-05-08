@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { routes, asyncRoutes } from '@/routers'
+import { asyncRoutes, routes } from '@/routers'
 import { filterKeepAlive } from '@/utils'
+
 export const usePermissionStore = defineStore({
   id: 'permissionState',
   state: () => ({
@@ -27,7 +28,8 @@ export const usePermissionStore = defineStore({
         let accessedRoutes
         if (roles && roles.length && !roles.includes('admin')) {
           // accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-        } else {
+        }
+        else {
           accessedRoutes = asyncRoutes || []
         }
         this.routes = routes.concat(accessedRoutes)

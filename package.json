@@ -1,40 +1,27 @@
 {
   "name": "vite-vue3-ts-template",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx",
-    "lint:fix": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
-    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
-    "commit-msg": "node verify-commit.mjs"
-  },
-  "lint-staged": {
-    "*.{js,json,vue}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "eslint --fix",
-      "prettier --parser=typescript --write"
-    ]
+    "lint": "eslint ."
   },
   "dependencies": {
     "element-plus": "^2.7.0",
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.16.2",
     "@element-plus/icons-vue": "^2.3.1",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-typescript": "^12.0.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-format": "^0.1.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.24.1",
     "lint-staged": "^15.2.2",
@@ -47,5 +34,14 @@
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-router": "^4.3.0",
     "vue-tsc": "^2.0.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "node verify-commit.mjs"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --fix"
+    ]
   }
 }

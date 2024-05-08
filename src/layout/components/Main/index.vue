@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+import { useWrapComponents } from '@/hooks/useWrapComponents'
+import { useSettingStore } from '@/store/modules/setting'
+import { usePermissionStore } from '@/store/modules/permission'
+
+const SettingStore = useSettingStore()
+const PermissionStore = usePermissionStore()
+const cacheRoutes = computed(() => PermissionStore.keepAliveRoutes)
+const isReload = computed(() => SettingStore.isReload)
+</script>
+
 <template>
   <div class="app-main">
     <router-view v-slot="{ Component, route }">
@@ -12,17 +24,6 @@
     </router-view>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useWrapComponents } from '@/hooks/useWrapComponents'
-import { computed } from 'vue'
-import { useSettingStore } from '@/store/modules/setting'
-import { usePermissionStore } from '@/store/modules/permission'
-const SettingStore = useSettingStore()
-const PermissionStore = usePermissionStore()
-const cacheRoutes = computed(() => PermissionStore.keepAliveRoutes)
-const isReload = computed(() => SettingStore.isReload)
-</script>
 
 <style lang="scss" scoped>
 .app-main {

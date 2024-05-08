@@ -1,18 +1,8 @@
-<template>
-  <div>
-    <el-drawer v-model="drawer" title="设置" size="300px">
-      <div class="theme-item">
-        <label>暗黑模式</label>
-        <switch-dark></switch-dark>
-      </div>
-    </el-drawer>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { computed } from 'vue'
 import SwitchDark from '@/components/SwitchDark/index.vue'
-import { keyType, useSettingStore, valueType } from '@/store/modules/setting'
+import type { keyType, valueType } from '@/store/modules/setting'
+import { useSettingStore } from '@/store/modules/setting'
 
 const SettingStore = useSettingStore()
 
@@ -26,10 +16,21 @@ const drawer = computed({
 })
 
 // 进行配置
-const changeSwitch = (key: keyType, val: valueType) => {
+function changeSwitch(key: keyType, val: valueType) {
   SettingStore.setThemeConfig(key, val)
 }
 </script>
+
+<template>
+  <div>
+    <el-drawer v-model="drawer" title="设置" size="300px">
+      <div class="theme-item">
+        <label>暗黑模式</label>
+        <SwitchDark />
+      </div>
+    </el-drawer>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 ::v-deep(.el-drawer__header) {
@@ -79,16 +80,22 @@ const changeSwitch = (key: keyType, val: valueType) => {
     border-radius: 5.5px;
     font-size: 12px;
     background: #ebf5ff;
-    transition: color 0.15s ease, background-color 0.15s ease,
-      border-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .item-child2 {
     margin-top: 10px;
     color: #b37feb;
     background: #f7f2fd;
-    transition: color 0.15s ease, background-color 0.15s ease,
-      border-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 }
 

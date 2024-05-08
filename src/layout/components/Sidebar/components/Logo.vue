@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+defineProps<{ isCollapse: boolean }>()
+</script>
+
 <template>
   <div class="sidebar-logo-container">
     <transition name="sidebarLogoFadeCl">
@@ -7,19 +11,17 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img src="@/assets/logo.png" class="sidebar-logo" />
+        <img src="@/assets/logo.png" class="sidebar-logo">
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img src="@/assets/logo.png" class="sidebar-logo" />
-        <h1 class="sidebar-title">这是我搞的平台模板</h1>
+        <img src="@/assets/logo.png" class="sidebar-logo">
+        <h1 class="sidebar-title">
+          这是我搞的平台模板
+        </h1>
       </router-link>
     </transition>
   </div>
 </template>
-
-<script lang="ts" setup>
-defineProps<{ isCollapse: boolean }>()
-</script>
 
 <style lang="scss" scoped>
 .sidebarLogoFadeCl-enter-active {

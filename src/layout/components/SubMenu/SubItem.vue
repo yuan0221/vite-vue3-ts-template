@@ -1,39 +1,8 @@
-<template>
-  <template v-if="!item.hidden">
-    <template
-      v-if="!item.alwaysShow && hasOneShowingChild(item.children, item)"
-    >
-      <app-link v-if="onlyOneChild.meta" :to="onlyOneChild.path">
-        <el-menu-item :index="onlyOneChild.path">
-          <el-icon :size="20">
-            <component :is="onlyOneChild?.meta.icon"></component>
-          </el-icon>
-          <template #title>{{
-            onlyOneChild.meta && onlyOneChild.meta.title
-          }}</template>
-        </el-menu-item>
-      </app-link>
-    </template>
-    <el-sub-menu v-else :index="item.path" teleported>
-      <template #title>
-        <el-icon :size="20">
-          <component :is="item.meta?.icon"></component>
-        </el-icon>
-        <span>{{ item.meta && item.meta.title }}</span>
-      </template>
-      <sub-item
-        v-for="child in item.children"
-        :key="child.path"
-        :item="child"
-      />
-    </el-sub-menu>
-  </template>
-</template>
-
 <script lang="ts" setup>
-import AppLink from './Link.vue'
 import { ref } from 'vue'
-const props = defineProps({
+import AppLink from './Link.vue'
+
+defineProps({
   item: {
     type: Object,
     required: true,
@@ -45,12 +14,13 @@ const props = defineProps({
 })
 
 const onlyOneChild = ref(null)
-const hasOneShowingChild = (children = [], parent) => {
+function hasOneShowingChild(children = [], parent) {
   const showingChildren = children.filter((item: any) => {
     // 过滤掉需要隐藏的菜单
     if (item.hidden) {
       return false
-    } else {
+    }
+    else {
       // 临时设置（如果只有一个显示子项，则将使用）
       onlyOneChild.value = item
       return true
@@ -58,9 +28,9 @@ const hasOneShowingChild = (children = [], parent) => {
   })
 
   // 当只有一个子路由器时，默认情况下会显示该子路由器
-  if (showingChildren.length === 1) {
+  if (showingChildren.length === 1)
     return true
-  }
+
   // 如果没有要显示的子路由器，则显示父路由器
   if (showingChildren.length === 0) {
     onlyOneChild.value = { ...parent, noShowingChildren: true }
@@ -70,3 +40,35 @@ const hasOneShowingChild = (children = [], parent) => {
   return false
 }
 </script>
+
+<template>
+  <template v-if="!item.hidden">
+    <template
+      v-if="!item.alwaysShow && hasOneShowingChild(item.children, item)"
+    >
+      <AppLink v-if="onlyOneChild.meta" :to="onlyOneChild.path">
+        <el-menu-item :index="onlyOneChild.path">
+          <el-icon :size="20">
+            <component :is="onlyOneChild?.meta.icon" />
+          </el-icon>
+          <template #title>
+            {{ onlyOneChild.meta && onlyOneChild.meta.title }}
+          </template>
+        </el-menu-item>
+      </AppLink>
+    </template>
+    <el-sub-menu v-else :index="item.path" teleported>
+      <template #title>
+        <el-icon :size="20">
+          <component :is="item.meta?.icon" />
+        </el-icon>
+        <span>{{ item.meta && item.meta.title }}</span>
+      </template>
+      <sub-item
+        v-for="child in item.children"
+        :key="child.path"
+        :item="child"
+      />
+    </el-sub-menu>
+  </template>
+</template>

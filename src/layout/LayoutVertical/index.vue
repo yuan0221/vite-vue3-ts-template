@@ -1,5 +1,12 @@
+<script lang="ts" setup>
+import Sidebar from '../components/Sidebar/index.vue'
+import Main from '../components/Main/index.vue'
+import Footer from '../components/Footer/index.vue'
+import HeaderVertical from './HeaderVertical/index.vue'
+</script>
+
 <template>
-  <!--纵向布局-->
+  <!-- 纵向布局 -->
   <Sidebar />
   <div class="main-container">
     <HeaderVertical />
@@ -7,13 +14,6 @@
     <Footer />
   </div>
 </template>
-
-<script lang="ts" setup>
-import Sidebar from '../components/Sidebar/index.vue'
-import HeaderVertical from './HeaderVertical/index.vue'
-import Main from '../components/Main/index.vue'
-import Footer from '../components/Footer/index.vue'
-</script>
 
 <style lang="scss" scoped>
 .g-container-layout {

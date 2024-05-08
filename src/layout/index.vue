@@ -1,19 +1,11 @@
-<template>
-  <div class="g-container-layout">
-    <component :is="LayoutComponents[themeConfig.mode]" />
-    <Theme />
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { computed, watch } from 'vue'
+import LayoutVertical from './LayoutVertical/index.vue'
 import Theme from '@/components/Theme/index.vue'
 import { useSettingStore } from '@/store/modules/setting'
-import LayoutVertical from './LayoutVertical/index.vue'
 
 const SettingStore = useSettingStore()
 const themeConfig = computed(() => SettingStore.themeConfig)
-console.log(themeConfig.value.mode)
 const LayoutComponents = {
   vertical: LayoutVertical,
 }
@@ -21,15 +13,22 @@ const LayoutComponents = {
 watch(
   () => 'desktop',
   (val) => {
-    let vertical = val === 'mobile' ? 'vertical' : themeConfig.value.mode
+    const vertical = val === 'mobile' ? 'vertical' : themeConfig.value.mode
     const body = document.body as HTMLElement
     body.setAttribute('class', `layout-${vertical}`)
   },
   {
     immediate: true,
-  }
+  },
 )
 </script>
+
+<template>
+  <div class="g-container-layout">
+    <component :is="LayoutComponents[themeConfig.mode]" />
+    <Theme />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .g-container-layout {

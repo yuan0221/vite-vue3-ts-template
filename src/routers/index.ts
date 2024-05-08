@@ -1,12 +1,12 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import dataScreenRouter from './modules/dataScreen'
+import homeRouter from './modules/home'
 import Layout from '@/layout/index.vue'
 
 interface extendRoute {
   hidden?: boolean
 }
-
-import dataScreenRouter from './modules/dataScreen'
-import homeRouter from './modules/home'
 
 export const asyncRoutes = [...dataScreenRouter, ...homeRouter]
 

@@ -62,7 +62,9 @@ body {
   border-left-color: $primaryColor !important;
 }
 #nprogress .peg {
-  box-shadow: 0 0 10px $primaryColor, 0 0 5px $primaryColor !important;
+  box-shadow:
+    0 0 10px $primaryColor,
+    0 0 5px $primaryColor !important;
 }
 
 .app-container {

@@ -1,9 +1,3 @@
-<template>
-  <component :is="type" v-bind="linkProps(to)">
-    <slot />
-  </component>
-</template>
-
 <script>
 export default {
   props: {
@@ -17,9 +11,9 @@ export default {
       return false
     },
     type() {
-      if (this.isExternal) {
+      if (this.isExternal)
         return 'a'
-      }
+
       return 'router-link'
     },
   },
@@ -33,12 +27,18 @@ export default {
         }
       }
       return {
-        to: to,
+        to,
       }
     },
   },
 }
 </script>
+
+<template>
+  <component :is="type" v-bind="linkProps(to)">
+    <slot />
+  </component>
+</template>
 
 <style lang="scss" scoped>
 a {

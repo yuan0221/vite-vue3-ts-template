@@ -1,3 +1,14 @@
+<script lang="ts" setup>
+import { Setting } from '@element-plus/icons-vue'
+import type { keyType, valueType } from '@/store/modules/setting'
+import { useSettingStore } from '@/store/modules/setting'
+
+const SettingStore = useSettingStore()
+function changeSwitch(key: keyType, val: valueType) {
+  SettingStore.setThemeConfig(key, val)
+}
+</script>
+
 <template>
   <div class="m-setting">
     <el-tooltip effect="dark" content="主题设置" placement="bottom">
@@ -11,15 +22,6 @@
     </el-tooltip>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { keyType, useSettingStore, valueType } from '@/store/modules/setting'
-import { Setting } from '@element-plus/icons-vue'
-const SettingStore = useSettingStore()
-const changeSwitch = (key: keyType, val: valueType) => {
-  SettingStore.setThemeConfig(key, val)
-}
-</script>
 
 <style lang="scss" scoped>
 .transverseMenu {
