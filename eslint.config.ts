@@ -20,7 +20,7 @@ const [
 
 export default [
   {
-    files: ['**/*.vue', '**/*.ts'],
+    files: ['**/*.vue'],
     languageOptions: {
       parser: parserVue,
       parserOptions: {
@@ -38,6 +38,11 @@ export default [
       vue: pluginVue,
     },
     rules: {
+      ...{
+        ...pluginVue.configs['vue3-essential'].rules as any,
+        ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
+        ...pluginVue.configs['vue3-recommended'].rules as any,
+      },
       'vue/block-order': ['error', {
         order: ['script', 'template', 'style'],
       }],
