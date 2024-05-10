@@ -1,4 +1,4 @@
-import Layout from '@/layout/index.vue'
+import Layout from '../../layout/index.vue'
 
 const chartsRouter = [
   {
@@ -13,7 +13,7 @@ const chartsRouter = [
     children: [
       {
         path: '/home',
-        component: () => import('@/views/Home.vue'),
+        component: () => import('../../views/Home.vue'),
         name: 'home',
         meta: { title: '动态home也', icon: 'chat-square' },
       },

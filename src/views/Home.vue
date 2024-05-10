@@ -7,4 +7,3 @@
 </template>
 
 <style scoped></style>
-

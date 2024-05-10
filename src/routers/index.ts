@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import dataScreenRouter from './modules/dataScreen'
 import homeRouter from './modules/home'
-import Layout from '@/layout/index.vue'
+import Layout from '../layout/index.vue'
 
 interface extendRoute {
   hidden?: boolean
@@ -22,7 +22,7 @@ export const routes: Array<routesType> = [
     children: [
       {
         path: '/home',
-        component: () => import('@/views/Home.vue'),
+        component: () => import('../views/Home.vue'),
         name: 'home',
         meta: {
           title: '静态首页',
@@ -45,7 +45,7 @@ export const routes: Array<routesType> = [
     children: [
       {
         path: '/dataScreen/index',
-        component: () => import('@/views/DataScreen/index.vue'),
+        component: () => import('../views/DataScreen/index.vue'),
         name: 'dataScreen',
         meta: { title: '静态dataScreen也', icon: 'chat-square' },
       },

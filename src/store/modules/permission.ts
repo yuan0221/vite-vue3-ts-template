@@ -1,15 +1,12 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes, routes } from '@/routers'
-import { filterKeepAlive } from '@/utils'
+import { asyncRoutes, routes, routesType } from '../../routers'
+import { filterKeepAlive } from '../../utils'
 
 export const usePermissionStore = defineStore({
   id: 'permissionState',
   state: () => ({
-    // 路由
     routes: [],
-    // 动态路由
     addRoutes: [],
-    // 缓存路由
     cacheRoutes: {},
   }),
   getters: {
@@ -22,18 +19,18 @@ export const usePermissionStore = defineStore({
   },
   actions: {
     // 生成路由
-    generateRoutes(roles) {
+    generateRoutes(roles: string[]) {
       return new Promise((resolve) => {
-        // 在这判断是否有权限，哪些角色拥有哪些权限
-        let accessedRoutes
+        let accessedRoutes: routesType[] = []
+
         if (roles && roles.length && !roles.includes('admin')) {
           // accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-        }
-        else {
+        } else {
           accessedRoutes = asyncRoutes || []
         }
         this.routes = routes.concat(accessedRoutes)
         this.addRoutes = accessedRoutes
+        
         resolve(accessedRoutes)
       })
     },

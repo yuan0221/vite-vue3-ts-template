@@ -1,4 +1,4 @@
-import Layout from '@/layout/index.vue'
+import Layout from '../../layout/index.vue'
 
 const dataScreenRouter = [
   {
@@ -13,7 +13,7 @@ const dataScreenRouter = [
     children: [
       {
         path: '/dataScreen/index',
-        component: () => import('@/views/DataScreen/index.vue'),
+        component: () => import('../../views/DataScreen/index.vue'),
         name: 'dataScreen',
         meta: { title: '动态dataScreen也', icon: 'chat-square' },
       },
