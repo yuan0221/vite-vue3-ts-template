@@ -11,10 +11,21 @@ defineProps<{ isCollapse: boolean }>()
         class="sidebar-logo-link"
         to="/"
       >
-        <img src="@/assets/logo.png" class="sidebar-logo">
+        <img
+          src="@/assets/logo.png"
+          class="sidebar-logo"
+        >
       </router-link>
-      <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img src="@/assets/logo.png" class="sidebar-logo">
+      <router-link
+        v-else
+        key="expand"
+        class="sidebar-logo-link"
+        to="/"
+      >
+        <img
+          src="@/assets/logo.png"
+          class="sidebar-logo"
+        >
         <h1 class="sidebar-title">
           这是我搞的平台模板
         </h1>

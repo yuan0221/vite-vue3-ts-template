@@ -46,7 +46,10 @@ function hasOneShowingChild(children = [], parent) {
     <template
       v-if="!item.alwaysShow && hasOneShowingChild(item.children, item)"
     >
-      <AppLink v-if="onlyOneChild.meta" :to="onlyOneChild.path">
+      <AppLink
+        v-if="onlyOneChild.meta"
+        :to="onlyOneChild.path"
+      >
         <el-menu-item :index="onlyOneChild.path">
           <el-icon :size="20">
             <component :is="onlyOneChild?.meta.icon" />
@@ -57,7 +60,11 @@ function hasOneShowingChild(children = [], parent) {
         </el-menu-item>
       </AppLink>
     </template>
-    <el-sub-menu v-else :index="item.path" teleported>
+    <el-sub-menu
+      v-else
+      :index="item.path"
+      teleported
+    >
       <template #title>
         <el-icon :size="20">
           <component :is="item.meta?.icon" />

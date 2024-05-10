@@ -8,15 +8,19 @@
 //   ignores: ['verify-commit.mjs', 'src/permission.ts'],
 // })
 
-import { interopDefault } from './src/utils/index.ts'
+import { interopDefault, renameRules } from './src/utils'
 
 const [
   pluginVue,
   parserVue,
+  pluginTs,
+  parserTs,
 ] = await Promise.all([
   interopDefault(import('eslint-plugin-vue')),
   interopDefault(import('vue-eslint-parser')),
-])
+  interopDefault(import('@typescript-eslint/eslint-plugin')),
+  interopDefault(import('@typescript-eslint/parser')),
+] as const)
 
 export default [
   {
@@ -46,6 +50,33 @@ export default [
       'vue/block-order': ['error', {
         order: ['script', 'template', 'style'],
       }],
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+  {
+    files: ['**/*.?([cm])[jt]s?(x)'],
+    ignores: ['**/*.config.ts'],
+    plugins: {
+      ts: pluginTs,
+    },
+    name: 'yl/typescript/rules',
+    languageOptions: {
+      parser: parserTs,
+      parserOptions: {
+        extraFileExtensions: ['.vue'],
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      ...renameRules(
+        pluginTs.configs['eslint-recommended'].overrides![0].rules!,
+        { '@typescript-eslint': 'ts' },
+      ),
+      ...renameRules(
+        pluginTs.configs.strict.rules!,
+        { '@typescript-eslint': 'ts' },
+      ),
+      'ts/no-explicit-any': 'off',
     },
   },
 ]

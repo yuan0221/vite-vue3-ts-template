@@ -1,6 +1,9 @@
 <template>
   <div class="footer-layout">
-    <span href="/" target="_blank"> 这是footer </span>
+    <span
+      href="/"
+      target="_blank"
+    > 这是footer </span>
   </div>
 </template>
 

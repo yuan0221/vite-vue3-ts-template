@@ -18,7 +18,10 @@ function handleClickMenu(subItem) {
 </script>
 
 <template>
-  <el-menu-item :index="subItem.path" @click="handleClickMenu(subItem)">
+  <el-menu-item
+    :index="subItem.path"
+    @click="handleClickMenu(subItem)"
+  >
     <el-icon>
       <component :is="subItem?.meta?.icon" />
     </el-icon>

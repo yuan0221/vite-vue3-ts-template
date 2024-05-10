@@ -23,7 +23,11 @@ function changeSwitch(key: keyType, val: valueType) {
 
 <template>
   <div>
-    <el-drawer v-model="drawer" title="设置" size="300px">
+    <el-drawer
+      v-model="drawer"
+      title="设置"
+      size="300px"
+    >
       <div class="theme-item">
         <label>暗黑模式</label>
         <SwitchDark />

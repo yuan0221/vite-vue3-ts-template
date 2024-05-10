@@ -4,7 +4,7 @@ import { useUserStore } from "@/store/modules/user";
 
 const whiteList = ["/login", "/auth-redirect"]; // 设置白名单
 // 记录路由
-let hasRoles = true;
+// let hasRoles = true;
 
 router.beforeEach(async (to, from, next) => {
   const UserStore = useUserStore();
@@ -26,7 +26,7 @@ router.beforeEach(async (to, from, next) => {
           );
           console.log(accessRoutes);
 
-          hasRoles = false;
+          // hasRoles = false;
           accessRoutes.forEach((item) => router.addRoute(item)); // 动态添加访问路由表
           next({ ...to, replace: true }); // // 这里相当于push到一个页面 不在进入路由拦截
         } else {

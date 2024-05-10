@@ -14,5 +14,9 @@ function switchDark() {
 </script>
 
 <template>
-  <el-switch v-model="themeConfig.isDark" inline-prompt @change="switchDark" />
+  <el-switch
+    v-model="themeConfig.isDark"
+    inline-prompt
+    @change="switchDark"
+  />
 </template>

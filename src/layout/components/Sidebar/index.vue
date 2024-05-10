@@ -28,8 +28,14 @@ const activeMenu = computed(() => {
 </script>
 
 <template>
-  <div class="sidebar-container" :class="{ 'has-logo': themeConfig.showLogo }">
-    <Logo v-if="themeConfig.showLogo" :is-collapse="isCollapse" />
+  <div
+    class="sidebar-container"
+    :class="{ 'has-logo': themeConfig.showLogo }"
+  >
+    <Logo
+      v-if="themeConfig.showLogo"
+      :is-collapse="isCollapse"
+    />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
@@ -40,7 +46,11 @@ const activeMenu = computed(() => {
         class="el-menu-vertical-demo"
         :collapse="isCollapse"
       >
-        <SubItem v-for="r in permission_routes" :key="r.path" :item="r" />
+        <SubItem
+          v-for="r in permission_routes"
+          :key="r.path"
+          :item="r"
+        />
       </el-menu>
     </el-scrollbar>
   </div>

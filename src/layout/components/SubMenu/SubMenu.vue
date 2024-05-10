@@ -22,14 +22,20 @@ function hasOneChild(children = [], parent) {
 </script>
 
 <template>
-  <template v-for="subItem in menuList" :key="subItem.path">
+  <template
+    v-for="subItem in menuList"
+    :key="subItem.path"
+  >
     <template v-if="!subItem.hidden">
       <template
         v-if="!subItem.alwaysShow && hasOneChild(subItem.children, subItem)"
       >
         <MenuItem :sub-item="hasOneChild(subItem.children, subItem)" />
       </template>
-      <el-sub-menu v-else :index="subItem.path">
+      <el-sub-menu
+        v-else
+        :index="subItem.path"
+      >
         <template #title>
           <el-icon>
             <component :is="subItem?.meta?.icon" />

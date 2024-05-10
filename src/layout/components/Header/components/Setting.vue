@@ -11,7 +11,11 @@ function changeSwitch(key: keyType, val: valueType) {
 
 <template>
   <div class="m-setting">
-    <el-tooltip effect="dark" content="主题设置" placement="bottom">
+    <el-tooltip
+      effect="dark"
+      content="主题设置"
+      placement="bottom"
+    >
       <el-icon
         style="font-size: 20px"
         class="bell header-icon"
