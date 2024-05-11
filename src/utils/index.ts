@@ -23,6 +23,31 @@ export function filterKeepAlive(routers: Route[]) {
   return cacheRouter
 }
 
+export function filterAsyncRoutes(routes: Route[], roles: string[]) {
+  const res:Route[] = []
+  routes.forEach((route) => {
+    const tmp = { ...route }
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles)
+      }
+      res.push(tmp)
+    }
+  })
+  return res
+}
+
+export function hasPermission(roles: string[], route: Route) {
+  const rs = Object.values(roles)
+
+  if (route.meta && route.meta.role) {
+    const metaRoles = route.meta.role as string[];
+    return rs.some((role) => metaRoles.includes(role))
+  } else {
+    return false
+  }
+}
+
 export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> {
   const resolved = await m
   return (resolved as any).default || resolved

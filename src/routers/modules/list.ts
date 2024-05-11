@@ -10,13 +10,14 @@ const listRouter: Array<Route> = [
     meta: {
       title: 'list',
       icon: 'chat-square',
+      role: ['seller']
     },
     children: [
       {
         path: '/list',
         component: () => import('../../views/list/index.vue'),
         name: 'list',
-        meta: { title: 'list', icon: 'chat-square' },
+        meta: { title: 'list', icon: 'chat-square', role: ['seller'], },
       },
     ],
   },

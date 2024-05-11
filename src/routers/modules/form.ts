@@ -11,13 +11,14 @@ const formRouter: Array<Route> = [
     meta: {
       title: 'form',
       icon: 'chat-square',
+      role: ['seller']
     },
     children: [
       {
         path: '/form/index',
         component: () => import('../../views/form/index.vue'),
         name: 'form',
-        meta: { title: 'form', icon: 'chat-square' },
+        meta: { title: 'form', icon: 'chat-square', role: ['seller'], },
       },
     ],
   },

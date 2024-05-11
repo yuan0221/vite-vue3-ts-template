@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { computed, watch } from 'vue'
 import LayoutVertical from './LayoutVertical/index.vue'
-import Theme from '@/components/Theme/index.vue'
-import { useSettingStore } from '@/store/modules/setting'
+import Theme from '../components/Theme/index.vue'
+import { useSettingStore } from '../store/modules/setting'
 
 const SettingStore = useSettingStore()
 const themeConfig = computed(() => SettingStore.themeConfig)

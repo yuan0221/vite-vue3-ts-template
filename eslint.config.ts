@@ -77,6 +77,7 @@ export default [
         { '@typescript-eslint': 'ts' },
       ),
       'ts/no-explicit-any': 'off',
+      'ts/no-non-null-assertion': 'off',
     },
   },
 ]

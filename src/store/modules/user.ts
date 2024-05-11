@@ -5,7 +5,7 @@ export const useUserStore = defineStore({
   state: () => ({
     token: 'randomusertoken',
     userInfo: {},
-    roles: localStorage.roles ? JSON.parse(localStorage.roles) : [],
+    roles: localStorage.roles ? JSON.parse(localStorage.roles) : ['seller'],
   }),
   getters: {},
   actions: {},
