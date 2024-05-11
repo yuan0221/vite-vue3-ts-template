@@ -2,7 +2,7 @@
 
 <template>
   <div class="root">
-    大屏
+    list
   </div>
 </template>
 

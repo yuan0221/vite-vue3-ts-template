@@ -5,11 +5,12 @@
  * @return void
  */
 
+import { Route } from 'src/routers/types'
 import type { Awaitable } from './types'
 
-export function filterKeepAlive(routers) {
+export function filterKeepAlive(routers: Route[]) {
   const cacheRouter: any[] = []
-  const deep = (routers) => {
+  const deep = (routers: Route[]) => {
     routers.forEach((item) => {
       if (item.meta?.keepAlive && item.name)
         cacheRouter.push(item.name)

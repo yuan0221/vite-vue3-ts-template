@@ -1,9 +1,9 @@
 import { h } from 'vue'
-import type { routesType } from '@/routers'
+import type { Route } from '@/routers'
 
 const wrapperMap = new Map()
 
-export function useWrapComponents(Component: any, route: routesType) {
+export function useWrapComponents(Component: any, route: Route) {
   let wrapper
   if (Component) {
     const wrapperName = route.name

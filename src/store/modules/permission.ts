@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes, routes, routesType } from '../../routers'
+import { asyncRoutes, routes } from '../../routers'
 import { filterKeepAlive } from '../../utils'
+import { Route } from 'src/routers/types'
 
 export const usePermissionStore = defineStore({
   id: 'permissionState',
   state: () => ({
-    routes: [],
-    addRoutes: [],
+    routes: [] as Route[],
+    addRoutes: [] as Route[],
     cacheRoutes: {},
   }),
   getters: {
@@ -21,7 +22,7 @@ export const usePermissionStore = defineStore({
     // 生成路由
     generateRoutes(roles: string[]) {
       return new Promise((resolve) => {
-        let accessedRoutes: routesType[] = []
+        let accessedRoutes: Route[] = []
 
         if (roles && roles.length && !roles.includes('admin')) {
           // accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)

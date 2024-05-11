@@ -1,18 +1,12 @@
-import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import dataScreenRouter from './modules/dataScreen'
-import homeRouter from './modules/home'
+import listRouter from './modules/list'
+import formRouter from './modules/form'
 import Layout from '../layout/index.vue'
+import { Route } from './types'
 
-interface extendRoute {
-  hidden?: boolean
-}
+export const asyncRoutes = [...formRouter, ...listRouter]
 
-export const asyncRoutes = [...dataScreenRouter, ...homeRouter]
-
-export type routesType = RouteRecordRaw & extendRoute
-
-export const routes: Array<routesType> = [
+export const routes: Array<Route> = [
   {
     path: '/',
     name: 'layout',
@@ -25,7 +19,7 @@ export const routes: Array<routesType> = [
         component: () => import('../views/Home.vue'),
         name: 'home',
         meta: {
-          title: '静态首页',
+          title: '首页',
           icon: 'House',
           affix: true,
           role: ['other'],
@@ -47,7 +41,7 @@ export const routes: Array<routesType> = [
         path: '/dataScreen/index',
         component: () => import('../views/DataScreen/index.vue'),
         name: 'dataScreen',
-        meta: { title: '静态dataScreen也', icon: 'chat-square' },
+        meta: { title: '大屏', icon: 'chat-square' },
       },
     ],
   },

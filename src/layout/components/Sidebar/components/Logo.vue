@@ -27,7 +27,7 @@ defineProps<{ isCollapse: boolean }>()
           class="sidebar-logo"
         >
         <h1 class="sidebar-title">
-          这是我搞的平台模板
+          vite-vue3-ts-admin
         </h1>
       </router-link>
     </transition>

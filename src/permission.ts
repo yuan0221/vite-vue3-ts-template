@@ -1,4 +1,4 @@
-import router, { routesType } from "./routers";
+import router, { Route } from "./routers";
 import { usePermissionStore } from "./store/modules/permission";
 import { useUserStore } from "./store/modules/user";
 
@@ -17,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
         if (!PermissionStore.routes.length) {
           const accessRoutes = await PermissionStore.generateRoutes(
             UserStore.roles
-          ) as routesType[];
+          ) as Route[];
 
           console.log(accessRoutes);
 
